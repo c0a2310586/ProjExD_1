@@ -22,14 +22,16 @@ def main():
             if event.type == pg.QUIT: return
         key_lst = pg.key.get_pressed()
 
-        if key_lst[pg.K_UP]:  
-            kk_rct.move_ip(0, -1)
-        if key_lst[pg.K_DOWN]:  
-            kk_rct.move_ip(0, +1)
-        if key_lst[pg.K_LEFT]:  
-            kk_rct.move_ip(-1, 0)
-        if key_lst[pg.K_RIGHT]:  
-            kk_rct.move_ip(+1, 0)
+        m_x, m_y = -1, 0  # デフォルトで左に移動（背景と同じ速度）
+        
+        if key_lst[pg.K_UP]:
+            m_y = -1  # 上方向
+        if key_lst[pg.K_DOWN]:
+            m_y = 1  # 下方向
+        if key_lst[pg.K_RIGHT]:
+            m_x = 1  # 右方向
+        
+        kk_rct.move_ip(m_x, m_y)  # 1回だけ移動を適用
 
         x = -(tmr%3200)
         screen.blit(bg_img,  [x, 0])
