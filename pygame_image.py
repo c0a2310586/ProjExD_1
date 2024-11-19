@@ -18,7 +18,8 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
-        screen.blit(bg_img, [0, 0]) # Screen surfaceに出現画像Surfaceを貼り付ける
+        bg_x = -(tmr % 800)
+        screen.blit(bg_img, [bg_x, 0]) # Screen surfaceに出現画像Surfaceを貼り付ける
         screen.blit(kk_img, [300, 200])
         pg.display.update()
         tmr += 1        
